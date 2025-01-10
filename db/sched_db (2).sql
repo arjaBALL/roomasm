@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2025 at 10:28 AM
+-- Generation Time: Jan 07, 2025 at 11:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,9 +37,7 @@ CREATE TABLE `floors` (
 --
 
 INSERT INTO `floors` (`floor_id`, `floor_number`) VALUES
-(1, 1),
-(2, 2),
-(3, 3);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -236,50 +234,7 @@ INSERT INTO `history` (`history_id`, `date`, `data`, `action`, `user`) VALUES
 (1601, '2025-01-04 18:57:55', 'Christine Redoblo', 'Login', 'Admin'),
 (1602, '2025-01-04 22:40:59', 'Christine Redoblo', 'Login', 'Admin'),
 (1603, '2025-01-04 23:38:40', 'Christine Redoblo', 'Login', 'Admin'),
-(1604, '2025-01-05 02:05:45', 'Christine Redoblo', 'Login', 'Admin'),
-(1605, '2025-01-07 19:02:41', 'Christine Redoblo', 'Login', 'Admin'),
-(1606, '2025-01-09 13:25:18', 'Christine Redoblo', 'Login', 'Admin'),
-(1607, '2025-01-09 13:28:50', 'Christine Redoblo', 'Login', 'Admin'),
-(1608, '2025-01-09 13:49:36', 'Lab 3', 'Update Entry Room', 'Admin'),
-(1609, '2025-01-09 14:03:05', 'Lab 1', 'Update Entry Room', 'Admin'),
-(1610, '2025-01-09 14:23:12', 'FirstName: , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1611, '2025-01-09 14:23:18', 'FirstName: , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1612, '2025-01-09 14:23:33', 'FirstName: , LastName: Doe', 'Update Entry Teacher', 'Admin'),
-(1613, '2025-01-09 14:24:39', 'FirstName: , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1614, '2025-01-09 14:24:48', 'FirstName: , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1615, '2025-01-09 14:26:43', 'FirstName: John , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1616, '2025-01-09 14:26:53', 'FirstName: John , LastName: Doe', 'Update Entry Teacher', 'Admin'),
-(1617, '2025-01-09 14:26:59', 'FirstName: John , LastName: Do', 'Update Entry Teacher', 'Admin'),
-(1618, '2025-01-09 14:28:48', 'FirstName: John , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1619, '2025-01-09 14:29:30', 'FirstName: John , LastName: Do', 'Update Entry Teacher', 'Admin'),
-(1620, '2025-01-09 14:32:52', 'FirstName: John , LastName: Doe', 'Update Entry Teacher', 'Admin'),
-(1621, '2025-01-09 14:32:57', 'FirstName: John , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1622, '2025-01-09 14:33:03', 'FirstName: John , LastName: Do', 'Update Entry Teacher', 'Admin'),
-(1623, '2025-01-09 14:46:55', 'FirstName: John , LastName: Do', 'Update Entry Teacher', 'Admin'),
-(1624, '2025-01-09 14:47:08', 'FirstName: John , LastName: Doe', 'Update Entry Teacher', 'Admin'),
-(1625, '2025-01-09 19:58:45', 'Lab 2', 'Update Entry Room', 'Admin'),
-(1626, '2025-01-09 19:58:56', 'Lab 3', 'Update Entry Room', 'Admin'),
-(1627, '2025-01-09 20:03:08', 'Lab 1', 'Update Entry Room', 'Admin'),
-(1628, '2025-01-10 09:10:44', 'Christine Redoblo', 'Login', 'Admin'),
-(1629, '2025-01-10 09:11:19', 'Christine Redoblo', 'Login', 'Admin'),
-(1630, '2025-01-10 09:18:33', 'Christine Redoblo', 'Login', 'Admin'),
-(1631, '2025-01-10 09:19:09', 'FirstName: John , LastName: Does', 'Update Entry Teacher', 'Admin'),
-(1632, '2025-01-10 10:55:59', 'Christine Redoblo', 'Login', 'Admin'),
-(1633, '2025-01-10 11:31:25', 'Christine Redoblo', 'Login', 'Admin'),
-(1634, '2025-01-10 11:34:18', 'Christine Redoblo', 'Login', 'Admin'),
-(1635, '2025-01-10 12:26:30', 'FirstName: Rodolfo, LastName: Puyat', 'Update Entry Teacher', 'Admin'),
-(1636, '2025-01-10 12:26:54', 'FirstName: Francis, LastName: Rivas', 'Update Entry Teacher', 'Admin'),
-(1637, '2025-01-10 12:28:52', 'FirstName: Rodulfo, LastName: Puyat', 'Update Entry Teacher', 'Admin'),
-(1638, '2025-01-10 12:28:53', 'FirstName: Rodulfo, LastName: Puyat', 'Update Entry Teacher', 'Admin'),
-(1639, '2025-01-10 12:28:56', 'FirstName: Rodulfo, LastName: Puyat', 'Update Entry Teacher', 'Admin'),
-(1640, '2025-01-10 13:13:23', 'Christine Redoblo', 'Login', 'Admin'),
-(1641, '2025-01-10 14:16:18', 'Christine Redoblo', 'Login', 'Admin'),
-(1642, '2025-01-10 14:18:37', 'FirstName: John , LastName: Doe', 'Update Entry Teacher', 'Admin'),
-(1643, '2025-01-10 14:32:59', '', 'Delete Subject', 'Admin'),
-(1644, '2025-01-10 14:33:01', ' ITC 131', 'Delete Subject', 'Admin'),
-(1645, '2025-01-10 14:50:00', 'Christine Redoblo', 'Login', 'Admin'),
-(1646, '2025-01-10 15:08:22', 'Christine Redoblo', 'Login', 'Admin'),
-(1647, '2025-01-10 15:29:21', 'Christine Redoblo', 'Login', 'Admin');
+(1604, '2025-01-05 02:05:45', 'Christine Redoblo', 'Login', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -298,10 +253,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `room_name`, `floor_id`) VALUES
-(1, 'Lab 1', 1),
-(2, '201', 2),
-(3, '301', 3),
-(4, 'Lab 2', 1);
+(1, 'Lab 1', 1);
 
 -- --------------------------------------------------------
 
@@ -325,11 +277,7 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`schedule_id`, `floor_id`, `room_id`, `day_of_week`, `start_time`, `end_time`, `SubjectID`, `TeacherID`) VALUES
-(1, 1, 1, 'Saturday', '07:00:00', '08:30:00', 3, 2),
-(4, 2, 2, 'Monday', '07:00:00', '08:30:00', 3, 2),
-(8, 1, 1, 'Friday', '07:00:00', '08:30:00', 3, 2),
-(11, 1, 1, 'Monday', '07:00:00', '08:30:00', 2, 1),
-(14, 3, 3, 'Monday', '07:00:00', '08:30:00', 2, 2);
+(1, 1, 1, 'Monday', '07:00:00', '08:30:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -349,16 +297,27 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`SubjectID`, `SubjectName`, `SubjectDescription`, `TeacherID`) VALUES
-(2, 'ITE 314', 'INTEGRATIVE PROGRAMING 2', 2),
-(3, 'ITC 314', 'INTEGRATIVE PROGRAMING 2', 2);
+(1, 'GE 117', 'General English', 1),
+(2, 'ITC', 'INTEGRATIVE PROGRAMING', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `teachers`
 --
--- Error reading structure for table sched_db.teachers: #1932 - Table &#039;sched_db.teachers&#039; doesn&#039;t exist in engine
--- Error reading data for table sched_db.teachers: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `sched_db`.`teachers`&#039; at line 1
+
+CREATE TABLE `teachers` (
+  `TeacherID` int(11) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`TeacherID`, `FirstName`, `LastName`) VALUES
+(1, 'John ', 'Doe');
 
 -- --------------------------------------------------------
 
@@ -429,6 +388,12 @@ ALTER TABLE `subjects`
   ADD KEY `TeacherID` (`TeacherID`) USING BTREE;
 
 --
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`TeacherID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -442,31 +407,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `floor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `floor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1648;
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1605;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `SubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `TeacherID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
