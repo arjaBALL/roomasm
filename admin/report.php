@@ -9,7 +9,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 $servername = "localhost";
 $username = "username";
 $password = "password";
-$dbname = "sched_db";
+$dbname = "schd";
 
 // Connect to the database
 $conn = new mysqli($servername, $username, $password, $dbname);

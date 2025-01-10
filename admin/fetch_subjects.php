@@ -1,10 +1,9 @@
 <?php
-include('./connection/dbcon.php');
 if (isset($_GET['TeacherID'])) {
     $TeacherID = $_GET['TeacherID'];
 
     // Connect to the database
-    $conn = new mysqli('localhost', 'root', '', 'sched_db');
+    $conn = new mysqli('localhost', 'root', '', 'schd');
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     }
