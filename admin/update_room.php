@@ -1,23 +1,25 @@
-<?php 
+<?php
+include('./connection/session.php');
 include('./connection/dbcon.php');
-include('./connection/session.php'); 
 
+// Fetch POST data
+$get_id = $_POST['get_id'];
+$room_name = $_POST['room_name'];
+$Description = $_POST['floor_id'];
 
-$get_id=$_POST['get_id'];
-$room_name=$_POST['room_name'];
-$Description=$_POST['Description'];
+// Update the room details in the rooms table
+$update_sql = "UPDATE rooms SET room_name='$room_name', floor_id='$Description' WHERE room_id='$get_id'";
+mysqli_query($conn, $update_sql) or die(mysqli_error($conn));
 
+// Fetch user details for logging the action
+$user_query = mysqli_query($conn, "SELECT * FROM users WHERE User_id=$id_session");
+$user_row = mysqli_fetch_array($user_query);
+$type = $user_row['User_Type'];
 
-mysqli_query($conn,"update room set room_name='$room_name',description='$Description' where room_id='$get_id'")or die(mysqli_error());
+// Log the action in the history table
+$log_sql = "INSERT INTO history (date, action, data, user) VALUES (NOW(), 'Update Entry Room', '$room_name', '$type')";
+mysqli_query($conn, $log_sql) or die(mysqli_error($conn));
 
-
-$logout_query=mysqli_query($conn,"select * from users where User_id=$id_session");
-$row=mysqli_fetch_array($logout_query);
-$type=$row['User_Type'];
-
-
-mysqli_query($conn,"insert into history (date,action,data,user)
-VALUES (NOW(),'Update Entry Room','$room_name','$type')") or die(mysqli_error());
-
-header('location:room.php');
+// Redirect back to the room page
+header('Location: room.php');
 ?>

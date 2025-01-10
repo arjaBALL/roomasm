@@ -10,6 +10,8 @@ include('./components/main.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select with Checkboxes</title>
+    <link rel="stylesheet" href="addsched.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Include Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <!-- jQuery (Make sure jQuery is included) -->
@@ -20,175 +22,152 @@ include('./components/main.php');
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 </head>
 
-<div class="wrapper ">
-    <div id="element" class="hero-body-schedule">
+<div class="wrapper">
+    <div id="element" class="hero-body-schedule" style="background-color: white; ">
         <h2>
-            <font color="white">Add Schedule List</font>
+            <font color="Black">Add Schedule List</font>
         </h2>
         <a class="btn btn-primary" href="schedule.php"><i class="icon-arrow-left icon-large"></i>&nbsp;Back</a>
         <hr>
-        <form id="save_voter" class="form-horizontal" method="POST" action="save_schedule.php"
-            onsubmit="return validateForm()">
+
+
+        <form id="save_voter" class="form-horizontal">
             <fieldset>
                 </br>
                 <div class="hai_naku">
+
                     <ul class="thumbnails_new_voter">
                         <li class="span3">
                             <div class="thumbnail_new_voter">
+                                <!-- Success and Error Messages -->
+                                <div class="confirmation" id="confirmation-message" style="display: none;">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Schedule has been successfully added.</span>
+                                </div>
 
+                                <div class="error" id="error-message" style="display: none;">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span>Error: The selected room is already used. Choose another
+                                        time
+                                        slot.</span>
+                                </div>
+                                <!-- Floor Selection -->
                                 <div class="control-group">
                                     <label class="control-label" for="input01">Floor:</label>
                                     <div class="controls">
-                                        <!-- Floor Dropdown -->
-                                        <select id="floor" class="span3333" name="floor" onchange="fetchRooms()">
+                                        <select id="floor" class="item" name="floor" onchange="fetchRooms()">
                                             <option value="">Select Floor</option>
                                             <?php include_once('fetch_floor.php'); ?>
-                                            <!-- Include PHP to fetch floor options -->
                                         </select>
-
-
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">Rooms:</label>
-                                        <div class="controls">
-                                            <!-- Floor Dropdown -->
-
-                                            <!-- Room Dropdown (Dynamic) -->
-                                            <select id="room" class="span3333" name="room" required>
-                                                <option value="">Select Room</option>
-                                            </select>
-                                        </div>
-
-                                        <!-- JavaScript -->
-                                        <script>
-                                            function fetchRooms() {
-                                                var floorId = $('#floor').val();  // Get selected floor ID
-                                                $('#room').html('<option>Loading...</option>'); // Show loading message in room dropdown
-
-                                                $.ajax({
-                                                    url: 'fetch_rooms.php', // The current PHP file that handles both floor and room fetching
-                                                    type: 'GET',
-                                                    data: { floor_id: floorId },  // Send selected floor ID to the server
-                                                    success: function (response) {
-                                                        $('#room').html(response);  // Update room dropdown with the fetched room options
-                                                    }
-                                                });
-                                            }
-                                        </script>
-                                    </div>
-
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">Day of Lecture:</label>
-                                        <div class="controls">
-                                            <select style="width: 82%;" id="schedule-day-input" name="day_of_week"
-                                                required>
-                                                <option value="Sunday">Sunday</option>
-                                                <option value="Monday">Monday</option>
-                                                <option value="Tuesday">Tuesday</option>
-                                                <option value="Wednesday">Wednesday</option>
-                                                <option value="Thursday">Thursday</option>
-                                                <option value="Friday">Friday</option>
-                                                <option value="Saturday">Saturday</option>
-                                            </select>
-                                        </div>
-                                        <script>
-                                            // Show and hide the dropdown list
-                                            document.getElementById("schedule-day-input").addEventListener("click", function () {
-                                                const list = document.getElementById("checkbox-list");
-                                                list.style.display = (list.style.display === "none" || list.style.display === "") ? "block" : "none";
-                                            });
-
-                                            // Update the input field with selected days
-                                            const checkboxes = document.querySelectorAll(".checkbox");
-                                            checkboxes.forEach(function (checkbox) {
-                                                checkbox.addEventListener("change", function () {
-                                                    const selectedDays = [];
-                                                    checkboxes.forEach(function (checkbox) {
-                                                        if (checkbox.checked) {
-                                                            selectedDays.push(checkbox.value);
-                                                        }
-                                                    });
-                                                    document.getElementById("schedule-day-input").value = selectedDays.join(", ");
-                                                });
-                                            });
-
-                                            // Close the dropdown if clicking outside
-                                            window.addEventListener("click", function (e) {
-                                                const dropdown = document.getElementById("checkbox-list");
-                                                if (!dropdown.contains(e.target) && e.target !== document.getElementById("schedule-day-input")) {
-                                                    dropdown.style.display = "none";
-                                                }
-                                            });
-                                        </script>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">Time Start:</label>
-                                        <div class="controls">
-                                            <input type="time" id="start-time" name="start_time" style="width: 40%;"
-                                                required>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">Time End:</label>
-                                        <div class="controls">
-
-                                            <input type="time" id="end-time" name="end_time" style="width: 40%;"
-                                                required>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">Teacher:</label>
-                                        <div class="controls">
-                                            <select id="teacher" class="span3333" name="teacher"
-                                                onchange="fetchSubjects()">
-                                                <option value="">Select Teacher</option>
-                                                <?php
-                                                // Fetch teachers from the database
-                                                include_once('fetch_teachers.php');
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">Rooms:</label>
-                                        <div class="controls">
-                                            <select id="subject" name="subject" required>
-                                                <option value="">Select Subject</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- JavaScript -->
-                                    <script>
-                                        function fetchSubjects() {
-                                            var TeacherID = $('#teacher').val();  // Get selected teacher ID
-                                            $('#subject').html('<option>Loading...</option>'); // Show loading message in subject dropdown
-
-                                            $.ajax({
-                                                url: 'fetch_subjects.php', // The PHP file that handles fetching subjects
-                                                type: 'GET',
-                                                data: { TeacherID: TeacherID },  // Send selected teacher ID to the server
-                                                success: function (response) {
-                                                    $('#subject').html(response);  // Update subject dropdown with the fetched subject options
-                                                }
-                                            });
-                                        }
-                                    </script>
-
-
-                                    <div class="control-group">
-                                        <div class="controls">
-                                            <button id="save_voter" class="btn btn-primary" name="save"><i
-                                                    class="icon-save icon-large"></i>Save</button>
-                                        </div>
                                     </div>
                                 </div>
+
+                                <!-- Room Selection -->
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">Rooms:</label>
+                                    <div class="controls">
+                                        <select id="room" class="item" name="room" required>
+                                            <option value="">Select Room</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- JavaScript for fetching rooms -->
+                                <script>
+                                    function fetchRooms() {
+                                        var floorId = $('#floor').val();  // Get selected floor ID
+                                        $('#room').html('<option>Loading...</option>'); // Show loading message in room dropdown
+
+                                        $.ajax({
+                                            url: 'fetch_rooms.php',
+                                            type: 'GET',
+                                            data: { floor_id: floorId },
+                                            success: function (response) {
+                                                $('#room').html(response);
+                                            }
+                                        });
+                                    }
+                                </script>
+
+                                <!-- Day of the Lecture -->
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">Day of Lecture:</label>
+                                    <div class="controls">
+                                        <select style="width: 75%;" id="schedule-day-input" name="day_of_week" required>
+                                            <option value="Sunday">Sunday</option>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                            <option value="Saturday">Saturday</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Time Start and End -->
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">Time Start:</label>
+                                    <div class="controls">
+                                        <input class="item" type="time" id="start-time" name="start_time"
+                                            style="width: 75%; height: 2.5em;" required>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">Time End:</label>
+                                    <div class="controls">
+                                        <input class="item" type="time" id="end-time" name="end_time"
+                                            style="width: 75%; height: 2.5em; " required>
+                                    </div>
+                                </div>
+
+                                <!-- Teacher Selection -->
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">Teacher:</label>
+                                    <div class="controls">
+                                        <select id="teacher" class="item" name="teacher" onchange="fetchSubjects()">
+                                            <option value="">Select Teacher</option>
+                                            <?php include_once('fetch_teachers.php'); ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Subject Selection -->
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">Subject:</label>
+                                    <div class="controls">
+                                        <select id="subject" name="subject" required>
+                                            <option value="">Select Subject</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- JavaScript for fetching subjects -->
+                                <script>
+                                    function fetchSubjects() {
+                                        var TeacherID = $('#teacher').val();  // Get selected teacher ID
+                                        $('#subject').html('<option>Loading...</option>'); // Show loading message in subject dropdown
+
+                                        $.ajax({
+                                            url: 'fetch_subjects.php',
+                                            type: 'GET',
+                                            data: { TeacherID: TeacherID },
+                                            success: function (response) {
+                                                $('#subject').html(response);
+                                            }
+                                        });
+                                    }
+                                </script>
+
+                                <!-- Save Button -->
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" id="save_voter" class="btn btn-primary"><i
+                                                class="icon-save icon-large"></i>Save</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </li>
                     </ul>
@@ -198,19 +177,47 @@ include('./components/main.php');
     </div>
 </div>
 
-</div>
-</li>
-</ul>
-</div>
-</fieldset>
-</form>
-</div>
-</div>
-
 <script>
+    $(document).ready(function () {
+        $('#save_voter').on('submit', function (e) {
+            e.preventDefault(); // Prevent page reload
+
+            // Perform AJAX request
+            $.ajax({
+                url: 'save_schedule.php', // The PHP script to save the schedule
+                type: 'POST',
+                data: $(this).serialize(), // Serialize form data
+                success: function (response) {
+                    var result = JSON.parse(response); // Parse JSON response from server
+
+                    if (result.status === 'success') {
+                        showConfirmationMessage(); // Show success message
+                    } else {
+                        showErrorMessage(); // Show error message
+                    }
+                },
+                error: function () {
+                    showErrorMessage(); // Show error message on failure
+                }
+            });
+        });
+    });
+
+    // Example function to show the confirmation message
+    function showConfirmationMessage() {
+        document.getElementById("confirmation-message").style.display = "block";
+        document.getElementById("error-message").style.display = "none";
+    }
+
+    // Example function to show the error message
+    function showErrorMessage() {
+        document.getElementById("error-message").style.display = "block";
+        document.getElementById("confirmation-message").style.display = "none";
+    }
 </script>
 
 <?php include('footer.php'); ?>
+
 <div class="modal hide fade" id="myModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>

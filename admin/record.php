@@ -39,7 +39,7 @@ include('./components/main.php');
 									<td><?php echo $row['LastName']; ?></td>
 									<td align="center" width="160">
 
-										<a class="btn btn-info" href="edit_teacher.php<?php echo '?id=' . $id; ?>"><i
+										<a class="btn btn-info" href="edit_teacher.php<?php echo '?TeacherID=' . $id; ?>"><i
 												class="icon-edit icon-large"></i>&nbsp;Edit</a>&nbsp;
 
 

@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        // If room is already booked for the selected time slot, return error message
         http_response_code(409);
         echo json_encode(["status" => "error", "message" => "Room is already booked for the selected time slot."]);
         exit;
@@ -52,9 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("iisssii", $floor_id, $room_id, $days, $start_time, $end_time, $subject_id, $teacher_id);
 
     if ($stmt->execute()) {
+        // Schedule added successfully
         http_response_code(201);
         echo json_encode(["status" => "success", "message" => "Schedule added successfully."]);
     } else {
+        // Failed to add schedule
         http_response_code(500);
         echo json_encode(["status" => "error", "message" => "Failed to add the schedule. Please try again."]);
     }

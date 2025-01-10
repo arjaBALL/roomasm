@@ -1,6 +1,5 @@
 <?php
 include('./connection/dbcon.php');
-include('./connection/session.php');
 
 
 $sql_fetch = "

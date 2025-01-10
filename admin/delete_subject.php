@@ -1,23 +1,26 @@
-<?php 
+<?php
 include('./connection/dbcon.php');
-include('./connection/session.php'); 
+include('./connection/session.php');
 
-$id=$_GET['id'];
+$id = $_GET['id']; // Get the subject ID from the URL parameter
 
+// Get the session data of the logged-in user
+$logout_query = mysqli_query($conn, "SELECT * FROM users WHERE User_id = $id_session") or die(mysqli_error($conn));
+$user_row = mysqli_fetch_array($logout_query);
+$user_name = $user_row['User_Type'];
 
-$logout_query=mysqli_query($conn,"select * from users where User_id=$id_session")or die(mysqli_error());
-$user_row=mysqli_fetch_array($logout_query);
-$user_name=$user_row['User_Type'];
+// Retrieve the subject details based on the ID
+$result = mysqli_query($conn, "SELECT * FROM subjects WHERE SubjectID = '$id'") or die(mysqli_error($conn));
+$row = mysqli_fetch_array($result);
+$f = $row['SubjectName']; // Store the subject name for logging purposes
 
+// Delete the subject from the database
+mysqli_query($conn, "DELETE FROM subjects WHERE SubjectID = '$id'") or die(mysqli_error($conn));
 
-$result=mysqli_query($conn,"select * from subject where Subject_id='$id'")or die(mysqli_error);
-$row=mysqli_fetch_array($result);
-$f=$row['subject_code'];
+// Log the deletion action in the history table
+mysqli_query($conn, "INSERT INTO history (data, action, date, user) VALUES ('$f', 'Delete Subject', NOW(), '$user_name')") or die(mysqli_error($conn));
 
-mysqli_query($conn,"delete from subject where Subject_id='$id'")or die(mysqli_error());
-
-mysqli_query($conn,"INSERT INTO history (data,action,date,user)VALUES('$f', 'Delete Subject', NOW(),'$user_name')")or die(mysqli_error());
-
-header('location:subject.php');
-
+// Redirect back to the subject page after deletion
+header('Location: subject.php');
+exit;
 ?>

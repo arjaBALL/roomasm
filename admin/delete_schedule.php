@@ -1,25 +1,18 @@
-<?php 
-include('./connection/session.php'); 
+<?php
+include('./connection/session.php');
 include('connection/dbcon.php');
 
+// Check if 'id' parameter is set in the URL
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-$id=$_GET['id'];
+    // Perform deletion query
+    $delete_query = mysqli_query($conn, "DELETE FROM schedules WHERE schedule_id='$id'") or die(mysqli_error($conn));
 
-
-$logout_query=mysqli_query($conn,"select * from users where User_id=$id_session")or die(mysqli_error($conn));
-$user_row=mysqli_fetch_array($logout_query);
-$user_name=$user_row['User_Type'];
-
-
-$result=mysqli_query($conn,"select * from schedule where schedule_id='$id'")or die(mysqli_error);
-$row=mysqli_fetch_array($result);
-$f=$row['time'];
-
-mysqli_query($conn,"delete from schedule where schedule_id='$id'")or die(mysqli_error($conn));
-
-mysqli_query($conn,"INSERT INTO history (data,action,date,user)VALUES('$f', 'Delete  Schedule', NOW(),'$user_name')")or die(mysqli_error($conn));
-
-
-header('location:schedule.php');
-
+    // Redirect to schedule page after deletion
+    header('location:schedule.php');
+} else {
+    // If 'id' is not set, redirect to the schedule page with an error
+    header('location:schedule.php?error=NoScheduleId');
+}
 ?>

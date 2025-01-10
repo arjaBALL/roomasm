@@ -15,9 +15,7 @@ include('./components/main.php');
 			</h2>
 			<a class="btn btn-primary" href="add_room.php"> <i class="icon-plus-sign icon-large"></i>&nbsp;Add Room</a>
 			<hr>
-			<table class="users-table">
-
-
+			< class="users-table">
 				<div class="demo_jui">
 					<table cellpadding="0" cellspacing="0" border="0" class="display" id="log" class="jtable">
 						<thead>
@@ -81,54 +79,57 @@ include('./components/main.php');
 				</div>
 
 
-
-
-
-		</div>
-
-		<?php include('footer.php'); ?>
-	</div>
-	</body>
-	<div class="modal hide fade" id="myModal">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">�</button>
-			<h3> </h3>
-		</div>
-		<div class="modal-body">
-			<p>
-				<font color="gray">Are You Sure you Want to LogOut?</font>
-			</p>
-		</div>
-		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">No</a>
-			<a href="logout.php" class="btn btn-primary">Yes</a>
+				</table>
+				</class>
 		</div>
 	</div>
+</div>
 
-	<script type="text/javascript">
-		$(document).ready(function () {
+</div>
+
+<?php include('footer.php'); ?>
+</div>
+</body>
+<div class="modal hide fade" id="myModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">�</button>
+		<h3> </h3>
+	</div>
+	<div class="modal-body">
+		<p>
+			<font color="gray">Are You Sure you Want to LogOut?</font>
+		</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">No</a>
+		<a href="logout.php" class="btn btn-primary">Yes</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
 
 
 
-			// $('.btn-danger1').click( function() {
+		// $('.btn-danger1').click( function() {
 
-			// 	var id = $(this).attr("id");
+		// 	var id = $(this).attr("id");
 
-			// 	if(confirm("Are you sure you want to delete this Room?")){
+		// 	if(confirm("Are you sure you want to delete this Room?")){
 
 
-			// 		$.ajax({
-			// 		type: "POST",
-			// 		url: "delete_room.php",
-			// 		data: ({id: id}),
-			// 		cache: false,
-			// 		success: function(html){
-			// 		$(".del"+id).fadeOut('slow'); 
-			// 		} 
-			// 		}); 
-			// 		}else{
-			// 		return false;}
-			// 	});				
-		});
+		// 		$.ajax({
+		// 		type: "POST",
+		// 		url: "delete_room.php",
+		// 		data: ({id: id}),
+		// 		cache: false,
+		// 		success: function(html){
+		// 		$(".del"+id).fadeOut('slow'); 
+		// 		} 
+		// 		}); 
+		// 		}else{
+		// 		return false;}
+		// 	});				
+	});
 
-	</script>
+</script>

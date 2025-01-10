@@ -1,4 +1,5 @@
 <?php
+include('./connection/dbcon.php');
 if (isset($_GET['TeacherID'])) {
     $TeacherID = $_GET['TeacherID'];
 
